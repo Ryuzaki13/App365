@@ -1,0 +1,75 @@
+﻿<Page x:Class="App365.ProductView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:App365"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="SearchText" TextChanged="TextBox_TextChanged" Margin="5"></TextBox>
+            <ComboBox SelectedItem="{Binding SelectedSortDescription}"
+                      ItemsSource="{Binding SortDescriptions}"
+                      DisplayMemberPath="Name"
+                      SelectionChanged="ComboBox_SelectionChanged"
+                      Margin="5" Grid.Column="1"></ComboBox>
+            <ComboBox DisplayMemberPath="Name" 
+                      Name="FilterByCategory"
+                      SelectedItem="{Binding SelectedCategory}"
+                      SelectionChanged="FilterByCategory_SelectionChanged"
+                      Margin="5" Grid.Column="2"></ComboBox>
+        </Grid>
+        
+        <ListView SelectionChanged="ProductList_SelectionChanged" Name="ProductList" Grid.Row="1" HorizontalContentAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Margin="10" Stretch="UniformToFill" Height="200" Source="{Binding Image}"></Image>
+                        <StackPanel VerticalAlignment="Center" Margin="10" Grid.Column="1">
+                            <TextBlock FontSize="24" FontWeight="Bold" Text="{Binding Name}"></TextBlock>
+                            <TextBlock FontSize="20">
+                                <Run FontWeight="Bold">Цена:</Run>
+                                <Run Text="{Binding Price}"></Run>
+                                <Run>рублей</Run>
+                            </TextBlock>
+                            <TextBlock FontSize="20">
+                                <Run FontWeight="Bold">Количество:</Run>
+                                <Run Text="{Binding Count}"></Run>
+                                <Run>штук</Run>
+                            </TextBlock>
+                            <TextBlock FontSize="20">
+                                <Run FontWeight="Bold">Размер:</Run>
+                                <Run Text="{Binding Size}"></Run>
+                            </TextBlock>
+                        </StackPanel>
+                        <TextBlock Margin="10" TextAlignment="Right" Grid.Column="2">
+                            <Run>Категория</Run>
+                            <LineBreak></LineBreak>
+                            <Run Text="{Binding Category}"></Run>
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Page>

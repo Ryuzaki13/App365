@@ -1,0 +1,22 @@
+﻿<Page x:Class="App365.StartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:App365"
+      mc:Ignorable="d" 
+      FontSize="32"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StartPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Height="80" Click="MoveToProductList">Список товаров</Button>
+        <Button Visibility="Collapsed" Name="ASD" Height="80" Grid.Column="1" >Добавить товар</Button>
+        <Button Height="80" Grid.Column="2" >Категории товара</Button>
+    </Grid>
+</Page>
